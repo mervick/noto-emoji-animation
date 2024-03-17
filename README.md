@@ -1,4 +1,4 @@
-<img src="https://kekse.biz/github.php?override=github:noto-emoji-animation&text=`noto-emoji-animation`&draw" />
+![https://kekse.biz/github.php?draw&override=github:noto-emoji-animation](noto-emoji-animation)
 
 # Animated Emojis by Google
 **=>** [**Google**: The hub for everything animated emoji!](https://googlefonts.github.io/noto-emoji-animation/),
