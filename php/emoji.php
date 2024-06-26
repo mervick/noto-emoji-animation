@@ -1,10 +1,10 @@
 <?php
 
-//
-// Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
-// <https://github.com/kekse1/noto-emoji-animation/>
-// v2.1.0
-//
+/*
+ * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
+ * <https://github.com/kekse1/noto-emoji-animation/>
+ * v2.1.1
+ */
 
 //
 namespace kekse;
@@ -73,7 +73,7 @@ function getTag($_string, $_url = true)
 	{
 		return null;
 	}
-	
+
 	return (':' . $result. ':');
 }
 
@@ -105,7 +105,7 @@ function output($_data, $_mime = null, $_exit = 0)
 	if(!is_string($_mime) || $_mime === '') $_mime = getMimeType('txt');
 
 	header('Content-Type: ' . $_mime);
-	header('Content-Length: ' . strlen($_data));
+	//header('Content-Length: ' . strlen($_data));
 
 	echo $_data;
 	if($_exit !== false) exit($_exit);
@@ -401,7 +401,18 @@ function lookUpTag($_tag, $_error = true)
 		if($_error) return error('Emoji index is not available!', 12);
 		return null;
 	}
-	
+
+	if($_tag[0] === ':')
+	{
+		$_tag = substr($_tag, 1);
+	}
+
+	$len = strlen($_tag);
+	if($_tag[$len - 1] === ':')
+	{
+		$_tag = substr($_tag, 0, $len - 1);
+	}
+
 	if(! isset($REFERENCE[$_tag])) return null;
 	return $REFERENCE[$_tag];
 }
